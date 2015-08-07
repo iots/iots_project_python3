@@ -1,0 +1,86 @@
+
+{% extends "detail.html" %}
+
+{% block content %}
+<div class="container">
+
+    <table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>消息</th>
+				<th>URL</th>
+			</tr>
+		</thead>
+		<tbody>
+        {% for l in pagelist %}
+        <tr>
+            <td>{{l.id}}</td>
+            <td>{{l.sent_message}}</td>
+            <td>{{l.sent_url}}</td>
+        </tr>
+        {% endfor %}
+		</tbody>
+	</table>
+	<ul class="pagination">
+            <a href="{% url 'history' %}?page=1">首页</a>
+    {%if page > 1 %}
+        <a href="{% url 'history' %}?page={{prepage}}">上一页</a>
+    {%endif%}
+    {% for pl in page_range%}
+        {%if pl == page %}
+            {{pl}}
+        {%else%}
+            <a href="{% url 'history' %}?page={{pl}}">{{pl}}</a>
+        {%endif%}
+    {% endfor %}
+    {%if page < p.num_pages %}
+        <a href="{% url 'history' %}?page={{nextpage}}">下一页</a>
+    {%endif%}
+    <a href="{% url 'history' %}?page={{p.num_pages}}">尾页</a>
+    </ul>
+</div>
+
+{% endblock %}
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <table>
+        <th>
+            <td>ID</td>
+            <td>内容</td>
+            <td>URL</td>
+        </th>
+        {% for l in pagelist %}
+        <tr>
+            <td>{{l.id}}</td>
+            <td>{{l.sent_message}}</td>
+            <td>{{l.sent_url}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'history' %}?page=1">首页</a>
+    {%if page > 1 %}
+        <a href="{% url 'history' %}?page={{prepage}}">上一页</a>
+    {%endif%}
+    {% for pl in page_range%}
+        {%if pl == page %}
+            {{pl}}
+        {%else%}
+            <a href="{% url 'history' %}?page={{pl}}">{{pl}}</a>
+        {%endif%}
+    {% endfor %}
+    {%if page < p.num_pages %}
+        <a href="{% url 'history' %}?page={{nextpage}}">下一页</a>
+    {%endif%}
+    <a href="{% url 'history' %}?page={{p.num_pages}}">尾页</a>
+</body>
+</html>
+-->

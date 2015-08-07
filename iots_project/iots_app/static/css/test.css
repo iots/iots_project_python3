@@ -1,0 +1,49 @@
+/* CSS Document */
+body,div,ul,li{padding:0; margin:0;}
+a{font-size:25px;}
+#nav{
+	width:960px;
+	height:35px;
+	background:#CCC;
+	margin:0 auto;
+	margin-top:30px;
+}
+#nav ul{
+	width:960px;
+	height:35px;
+}
+#nav ul li{
+	height:35px;
+	float:left;
+	list-style:none;
+	line-height:35px;
+	text-align:center;
+	padding:0 10px;
+}
+#nav ul li a{display:block; height:35px; color:#333; text-decoration:none; float:left; padding:0 10px;}
+#nav ul li a:hover{color:#fff; text-decoration:underline; background:#000;}
+
+#menu{
+	width:960px;
+	height:35px;
+	background:#CCC;
+	margin:0 auto;
+	margin-top:30px;
+}
+#menu ul{
+	width:960px;
+	height:35px;
+}
+#menu ul li{
+	height:35px;
+	float:left;
+	list-style:none;
+	line-height:35px;
+	text-align:center;
+	padding:0 10px;
+}
+#menu ul li a{display:block; height:35px; color:#333; text-decoration:none; float:left; padding:0 10px;}
+
+#menu ul li a:hover{color:#fff; text-decoration:underline; background:#000;}
+
+

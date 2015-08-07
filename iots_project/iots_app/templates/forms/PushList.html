@@ -1,0 +1,15 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>已推送列表</title>
+</head>
+
+<body>
+    <ul>
+        <p><b>push_message,push_url</b></p>
+        {% for field in ret %}
+        <li>{{ field.push_message }},{{ field.push_url }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

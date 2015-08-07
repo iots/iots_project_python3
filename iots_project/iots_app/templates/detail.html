@@ -1,0 +1,46 @@
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<link href="/static/css/bootmenu.css" rel="stylesheet">
+<script src="/nisc/static/js/jquery-1.11.3.min.js"></script>
+<script src="/nisc/static/js/bootstrap.min.js"></script>
+	{% block extracss %}{% endblock %}
+<title>方德信息服务中心</title>
+</head>
+<body>
+
+<script>
+$(function() {
+	$('nav a[href$="'+location.pathname.split('/').pop()+'"]').parent().addClass('active');
+});
+</script>
+
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/work/">方德信息服务中心</a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav">
+				{% if latest_poll_list %}
+    				{% for poll in latest_poll_list %}
+        				<li><a href={{ poll.notes }}>{{ poll.name }}</a></li>
+    				{% endfor %}
+				{% else %}
+					<li><a href="#">error</a></li>
+				{% endif %}
+				<li><a href="/work/home/">首页</a></li>
+				<li><a href="/work/online/">终端状态</a></li>
+				<li><a href="/work/push/">信息推送</a></li>
+				<li><a href="/work/history/">历史消息</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+    {% block content %}{% endblock %}
+
+</body>
+</html>

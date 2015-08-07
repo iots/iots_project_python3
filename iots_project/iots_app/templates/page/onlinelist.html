@@ -1,0 +1,115 @@
+{% extends "detail.html" %}
+
+{% block content %}
+<div class="container">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>UUID</th>
+				<th>MAC地址</th>
+				<th>操作系统</th>
+				<th>操作系统版本</th>
+				<th>内核版本</th>
+				<th>处理器型号</th>
+				<th>BIOS版本</th>
+			</tr>
+		</thead>
+		<tbody>
+        {% for l in pagelist %}
+        <tr>
+            <td>{{l.id}}</td>
+            <td>{{l.uuid}}</td>
+            <td>{{l.product_id}}</td>
+            <td>{{l.os_version}}</td>
+            <td>{{l.os_version}}</td>
+            <td>{{l.kernel_version}}</td>
+            <td>{{l.cpu_model}}</td>
+            <td>{{l.bios_version}}</td>
+
+        </tr>
+        {% endfor %}
+		</tbody>
+	</table>
+	<ul class="pagination">
+
+    <a href="{%url 'online'%}?page=1">首页</a>
+    {%if page > 1 %}
+        <a href="{%url 'online'%}?page={{prepage}}">上一页</a>
+    {%endif%}
+    {% for pl in page_range%}
+        {%if pl != None%}
+            {%if pl == page %}
+                {{pl}}
+            {%else%}
+                <a href="{%url 'online'%}?page={{pl}}">{{pl}}</a>
+            {%endif%}
+        {%else%}
+
+        {%endif%}
+    {% endfor %}
+    {%if page < p.num_pages %}
+        <a href="{%url 'online'%}?page={{nextpage}}">下一页</a>
+    {%endif%}
+    <a href="{%url 'online'%}?page={{p.num_pages}}">尾页</a>
+	</ul>
+</div>
+
+{% endblock %}
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <table>
+        <th>
+            <td>ID</td>
+            <td>UUID</td>
+            <td>MAC地址</td>
+            <td>操作系统</td>
+            <td>操作系统版本</td>
+            <td>内核版本</td>
+            <td>处理器型号</td>
+            <td>BIOS版本</td>
+        </th>
+        {% for l in pagelist %}
+        <tr>
+            <td>{{l.id}}</td>
+            <td>{{l.uuid}}</td>
+            <td>{{l.product_id}}</td>
+            <td>{{l.os_version}}</td>
+            <td>{{l.os_version}}</td>
+            <td>{{l.kernel_version}}</td>
+            <td>{{l.cpu_model}}</td>
+            <td>{{l.bios_version}}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{%url 'online'%}?page=1">首页</a>
+    {%if page > 1 %}
+        <a href="{%url 'online'%}?page={{prepage}}">上一页</a>
+    {%endif%}
+    {% for pl in page_range%}
+        {%if pl != None%}
+            {%if pl == page %}
+                {{pl}}
+            {%else%}
+                <a href="{%url 'online'%}?page={{pl}}">{{pl}}</a>
+            {%endif%}
+        {%else%}
+
+        {%endif%}
+    {% endfor %}
+    {%if page < p.num_pages %}
+        <a href="{%url 'online'%}?page={{nextpage}}">下一页</a>
+    {%endif%}
+    <a href="{%url 'online'%}?page={{p.num_pages}}">尾页</a>
+</body>
+</html>
+-->

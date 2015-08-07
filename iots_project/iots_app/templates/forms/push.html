@@ -1,0 +1,85 @@
+{% extends "detail.html" %}
+
+{% block content %}
+<div class="container">
+    {% if form.errors %}
+        </br>
+        <p style="color: red;">
+            {#pulralize 是filter，用来判断是否为添加's'来表示单词的复数形式#}
+            <b>Please correct the error{{ form.errors|pluralize }} below.</b>
+        </p>
+    {% endif %}
+</div>
+<div class="container">
+	<form id="pushrawdata" role="form" action="/work/push/" method="post">
+        {% csrf_token %}
+		<div class="form-group">
+			<label for="raw_message">信息编辑</label>
+			<textarea id="raw_message" name="push_message" placeholder="请输入推送信息文本" class="form-control"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="raw_url">网址</label>
+			<input id="raw_url" name="push_url" placeholder="请输入网址" type="text" class="form-control" value=""/>
+		</div>
+		<button type="submit" class="btn btn-default" type="submit" value="Submit">推送</button>
+
+        {% for field in form %}
+
+        <p>{{field.errors}}</p>
+        {% endfor %}
+	</form>
+</div>
+
+
+{% endblock %}
+
+<!--
+<form action="" method="POST">
+  {% csrf_token %}
+  <p>编辑消息(*)</p>
+  <p><textarea style="height:100px;width:300px;" name="push_message"></textarea></p>
+  <p>{{field.errors}}</p>
+  <p>编辑URL(*)</p>
+  <p><textarea style="height:20px;width:300px;" name="push_url"></textarea></p>
+  <p>{{field.errors}}</p>
+  <p><input type="submit" value="提交推送"/></p>
+
+  {{form.as_table}}
+  {% for field in form %}
+
+    <p>{{field.errors}}</p>
+  {% endfor %}
+</form>
+
+<html>
+<head>
+    <title>消息推送子界面</title>
+</head>
+
+<body>
+    {% if form.errors %}
+        </br>
+        <p style="color: red;">
+            {#pulralize 是filter，用来判断是否为添加's'来表示单词的复数形式#}
+            <b>Please correct the error{{ form.errors|pluralize }} below.</b>
+        </p>
+    {% endif %}
+
+    <form action="/work/push/" method="POST">
+        </br>
+        {% csrf_token %}
+        <div class="field">
+            <label for="push_message">编辑消息:</label>
+            {{ form.push_message }}
+            {{ form.push_message.errors }}
+        </div>
+        <div class="field">
+            <label for="push_url">编辑URL:</label>
+            {{ form.push_url }}
+            {{ form.push_url.errors }}
+        </div>
+        <input type="submit" value="提交推送">
+    </form> 
+</body>
+</html>
+-->
